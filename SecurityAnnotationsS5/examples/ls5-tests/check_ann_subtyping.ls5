@@ -1,0 +1,26 @@
+{let (%context = %nonstrictContext)
+    {%defineGlobalVar(%context,
+                       "x");
+     %defineGlobalVar(%context, "checkAnn");                  
+      {let (#strict = false)
+          {
+            SecAnn <!Parent!>;
+            SecAnn <!Child!> Extends <!Parent!>;
+            SecAnn <!GrandChild!> Extends <!Child!>;
+            %EnvCheckAssign(%context,
+                            "x",
+                            true as <!GrandChild!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "checkAnn",
+                            func(arg<!Parent!>) { arg },
+                            #strict);
+            %context["checkAnn" , {[#proto: null,
+                             #class: "Object",
+                             #extensible: true,]}](%context["x" , {[#proto: null,
+                             #class: "Object",
+                             #extensible: true,]}])
+          }
+      }
+    }
+}

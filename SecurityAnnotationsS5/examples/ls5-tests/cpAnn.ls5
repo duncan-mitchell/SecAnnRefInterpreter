@@ -1,0 +1,6 @@
+{let (%context = %nonstrictContext)
+     {let (#strict = false)
+     	  SecAnn <!A * B * C * D!>;
+          cpAnn true<!A!> false<!B * C!>
+     }
+}

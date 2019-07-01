@@ -1,0 +1,5 @@
+{let (%context = %nonstrictContext)
+     {let (#strict = false)
+     	  SecAnn <!A!>;
+     	  SecAnn <!B!> Extends <!A!>;
+          true<!A!>}}

@@ -1,0 +1,45 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "string");
+      %defineGlobalVar(%context,
+                       "obj");
+      {let (#strict = false)
+           {
+            SecAnn <!A!>;
+            %EnvCheckAssign(%context,
+                            "string",
+                            "string the first"<!A!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "obj",
+                            {[#proto: %ObjectProto,
+                              #class: "Object",
+                              #extensible: true,]
+                             'one' : {#value ("string the second") ,
+                                      #writable true ,
+                                      #configurable true}} as <!A!>,
+                            #strict);
+            try
+            {%set-property(%ToObject(%context["obj" , {[#proto: null,
+                                                        #class: "Object",
+                                                        #extensible: true,]}]),
+                           "two",
+                           %context["string" , {[#proto: null,
+                                                 #class: "Object",
+                                                 #extensible: true,]}])}
+            catch
+            {%ErrorDispatch};
+            %PrimAdd(%PropAccessorCheck(%context["obj" , {[#proto: null,
+                                                           #class: "Object",
+                                                           #extensible: true,]}])
+                       ["one" , {[#proto: null,
+                                  #class: "Object",
+                                  #extensible: true,]}],
+                     %PropAccessorCheck(%context["obj" , {[#proto: null,
+                                                           #class: "Object",
+                                                           #extensible: true,]}])
+                       ["two" , {[#proto: null,
+                                  #class: "Object",
+                                  #extensible: true,]}])
+            as <!A!>
+}}}}

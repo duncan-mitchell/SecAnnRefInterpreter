@@ -1,0 +1,6 @@
+{let (%context = %nonstrictContext)
+     {let (#strict = false)
+     	  SecAnn <!A * B * C!>;
+          true<!Top!> as <!B * A * C * A!>
+     }
+}

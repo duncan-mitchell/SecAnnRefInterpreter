@@ -1,0 +1,11 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "x");
+      {let (#strict = false)
+           {%EnvCheckAssign(%context,
+                            "x",
+                            1.,
+                            #strict);
+            %PropAccessorCheck(%this)["x" , {[#proto: null,
+                                              #class: "Object",
+                                              #extensible: true,]}]}}}}

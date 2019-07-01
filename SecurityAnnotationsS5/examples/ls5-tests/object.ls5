@@ -1,0 +1,49 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "x"; "y");
+      {let (#strict = false)
+           {
+            SecAnn <!A*B*C*D!>;
+            %EnvCheckAssign(%context,
+                            "x",
+                            {[#proto: %ObjectProto,
+                              #class: "Object",
+                              #extensible: true,]
+                             'one' : {#value (1. as <!A!>) ,
+                                      #writable true ,
+                                      #configurable true},
+                             'two' : {#value (2. as <!B!>),
+                                      #writable true ,
+                                      #configurable true}}<!A*B!> drop <!A!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "y",
+                            {[#proto: %ObjectProto,
+                              #class: "Object",
+                              #extensible: true,]
+                             'one' : {#value (true as <!C!>) ,
+                                      #writable true ,
+                                      #configurable true},
+                             'two' : {#value (false as <!B!>),
+                                      #writable true ,
+                                      #configurable true}}<!C!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "x",
+                            cpAnn %context["x" , {[#proto: null,
+                                       #class: "Object",
+                                       #extensible: true,]}] 
+                                  false<!D!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "x",
+                            cpAnn %context["x" , {[#proto: null,
+                                       #class: "Object",
+                                       #extensible: true,]}] 
+                                  %context["y" , {[#proto: null,
+                                       #class: "Object",
+                                       #extensible: true,]}],
+                            #strict);
+            prim("pretty", %context["x" , {[#proto: null,
+                                       #class: "Object",
+                                       #extensible: true,]}])}}}}

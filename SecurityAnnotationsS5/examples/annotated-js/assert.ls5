@@ -1,0 +1,13 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "x");
+      {let (#strict = false)
+           {SecAnn <!A * B!>;
+            %EnvCheckAssign(%context,
+                            "x",
+                            true as <!A!>,
+                            #strict);
+            func(SecurityAnnotationAssertionArg : <!A!>)
+            {SecurityAnnotationAssertionArg}(%context["x" , {[#proto: null,
+                                                              #class: "Object",
+                                                              #extensible: true,]}])}}}}

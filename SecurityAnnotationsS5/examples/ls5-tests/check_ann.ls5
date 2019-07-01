@@ -1,0 +1,24 @@
+{let (%context = %nonstrictContext)
+    {%defineGlobalVar(%context,
+                       "x");
+     %defineGlobalVar(%context, "checkAnn");                  
+      {let (#strict = false)
+          {
+            SecAnn <!A * B * C!>;
+            %EnvCheckAssign(%context,
+                            "x",
+                            true as <!A * B * C!>,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "checkAnn",
+                            func(arg<!B * A!>) { arg },
+                            #strict);
+            %context["checkAnn" , {[#proto: null,
+                             #class: "Object",
+                             #extensible: true,]}](%context["x" , {[#proto: null,
+                             #class: "Object",
+                             #extensible: true,]}])
+          }
+      }
+    }
+}

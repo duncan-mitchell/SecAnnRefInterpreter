@@ -1,0 +1,4 @@
+{[#proto: @0, #class: "Object", #extensible: true,]
+ 'two' : {#value false<!B!> , #writable true , #configurable true},
+ 'one' : {#value true<!C!> , #writable true , #configurable true}}<!C * D * B!>
+undefined

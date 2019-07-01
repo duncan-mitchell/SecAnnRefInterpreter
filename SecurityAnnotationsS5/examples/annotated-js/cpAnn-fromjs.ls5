@@ -1,0 +1,12 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "x");
+      {let (#strict = false)
+           {SecAnn <!A!>;
+            %EnvCheckAssign(%context,
+                            "x",
+                            true as <!A!>,
+                            #strict);
+            cpAnn(%context["x" , {[#proto: null,
+                                   #class: "Object",
+                                   #extensible: true,]}] , false)}}}}

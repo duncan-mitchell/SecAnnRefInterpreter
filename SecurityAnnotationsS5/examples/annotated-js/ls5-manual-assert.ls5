@@ -1,0 +1,5 @@
+{let (%context = %nonstrictContext)
+     {let (#strict = false)
+          {SecAnn <!A!>;
+           SecAnn <!B!>;
+           (func(x : <!A!>){ x }) (true as <!A * B!>)}}}

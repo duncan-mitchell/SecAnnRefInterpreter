@@ -1,0 +1,102 @@
+{let (%context = %nonstrictContext)
+     {%defineGlobalVar(%context,
+                       "func");
+      %defineGlobalVar(%context,
+                       "cnt");
+      %defineGlobalVar(%context,
+                       "arg");
+      {let (#strict = false)
+           {%EnvCheckAssign(%context,
+                            "cnt",
+                            0.,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "arg",
+                            1.,
+                            #strict);
+            %EnvCheckAssign(%context,
+                            "func",
+                            {let (%prototype7 = {[#proto: %ObjectProto,
+                                                  #class: "Object",
+                                                  #extensible: true,]
+                                                 'constructor' : {#value (undefined) ,
+                                                                  #writable true ,
+                                                                  #configurable false}})
+                                 {let (%parent = %context)
+                                      {let (%thisfunc8 = {[#proto: %FunctionProto,
+                                                           #code: func
+                                                                    (%this , %args)
+                                                                  {%args
+                                                                    [delete "%new"];
+                                                                   label %ret :
+                                                                   {{let (%this = %resolveThis
+                                                                    (#strict,
+                                                                    %this))
+                                                                    {let (%context = {let (%x4 = %args
+                                                                    ["0" , null])
+                                                                    {[#proto: %parent,
+                                                                    #class: "Object",
+                                                                    #extensible: true,]
+                                                                    'arguments' : {#value (%args) ,
+                                                                    #writable true ,
+                                                                    #configurable false},
+                                                                    'x' : {#getter func
+                                                                    (this , args)
+                                                                    {label %ret :
+                                                                    {break %ret %x4}} ,
+                                                                    #setter func
+                                                                    (this , args)
+                                                                    {label %ret :
+                                                                    {break %ret %x4 := args
+                                                                    ["0" , {[#proto: %ArrayProto,
+                                                                    #class: "Array",
+                                                                    #extensible: true,]}]}}}}})
+                                                                    {%EnvCheckAssign
+                                                                    (%context,
+                                                                    "cnt",
+                                                                    %PrimAdd
+                                                                    (%context
+                                                                    ["cnt" , {[#proto: null,
+                                                                    #class: "Object",
+                                                                    #extensible: true,]}],
+                                                                    %context
+                                                                    ["x" , {[#proto: null,
+                                                                    #class: "Object",
+                                                                    #extensible: true,]}]),
+                                                                    #strict);
+                                                                    undefined}}}}},
+                                                           #class: "Function",
+                                                           #extensible: true,]
+                                                          'prototype' : {#value (%prototype7) ,
+                                                                    #writable true ,
+                                                                    #configurable true},
+                                                          'length' : {#value (1.) ,
+                                                                    #writable true ,
+                                                                    #configurable true},
+                                                          'caller' : {#getter %ThrowTypeError ,
+                                                                    #setter %ThrowTypeError},
+                                                          'arguments' : {#getter %ThrowTypeError ,
+                                                                    #setter %ThrowTypeError}})
+                                           {%prototype7["constructor" = %thisfunc8 ,
+                                                        null];
+                                            %thisfunc8}}}},
+                            #strict);
+            {let (%fun2 = %context["func" , {[#proto: null,
+                                              #class: "Object",
+                                              #extensible: true,]}])
+                 {let (%ftype3 = prim("typeof", %fun2))
+                      if (prim("!", prim("stx=", %ftype3 , "function")))
+                         {%TypeError("Not a function")}
+                         else
+                         {%fun2(undefined,
+                                %mkArgsObj({[#proto: null,
+                                             #class: "Object",
+                                             #extensible: true,]
+                                            '0' : {#value (%context["arg" , {[#proto: null,
+                                                                    #class: "Object",
+                                                                    #extensible: true,]}]) ,
+                                                   #writable true ,
+                                                   #configurable true}}))}}};
+            %context["cnt" , {[#proto: null,
+                               #class: "Object",
+                               #extensible: true,]}]}}}}
